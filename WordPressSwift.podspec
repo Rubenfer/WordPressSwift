@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'WordPressSwift'
-s.version          = '0.1.0'
+s.version          = '0.2.0'
 s.summary          = 'Integrate WordPress on your app.'
 
 s.description      = <<-DESC
