@@ -1,0 +1,11 @@
+framework module WordPressSwift {
+  umbrella header "WordPressSwift.h"
+
+  export *
+  module * { export * }
+}
+
+module WordPressSwift.Swift {
+    header "WordPressSwift-Swift.h"
+    requires objc
+}

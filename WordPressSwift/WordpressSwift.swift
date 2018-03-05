@@ -149,20 +149,26 @@ Get posts published on Wordpress blog
         var posts = [WPPost]()
         
         if categoryID.isEmpty == false && postPerPage > 0 && page > 0 && blogURL.isEmpty == false{
-        
-            var categories = "\(categoryID.first!)"
             
-            if categoryID.count > 1 {
+            var baseURL = blogURL + "/wp-json/wp/v2/posts?page=\(page)&per_page=\(postPerPage)"
             
-                for i in 1...categoryID.count-1 {
+            if categoryID.first != 0 {
+                
+                var categories = "\(categoryID.first!)"
+                
+                if categoryID.count > 1 {
                     
-                    categories += ",\(categoryID[i])"
+                    for i in 1...categoryID.count-1 {
+                        
+                        categories += ",\(categoryID[i])"
+                        
+                    }
                     
                 }
                 
+                baseURL += "&categories=\(categories)"
+                
             }
-            
-            let baseURL = blogURL + "/wp-json/wp/v2/posts?page=\(page)&categories=\(categories)&per_page=\(postPerPage)"
         
             guard let url = URL(string: baseURL) else {
                 
