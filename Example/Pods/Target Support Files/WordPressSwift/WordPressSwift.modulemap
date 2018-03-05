@@ -1,0 +1,6 @@
+framework module WordPressSwift {
+  umbrella header "WordPressSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

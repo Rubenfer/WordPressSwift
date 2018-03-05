@@ -1,0 +1,12 @@
+PODS:
+  - WordPressSwift (0.2.0)
+
+DEPENDENCIES:
+  - WordPressSwift
+
+SPEC CHECKSUMS:
+  WordPressSwift: d34c377523b754da6b650bd34966ae8eefbed651
+
+PODFILE CHECKSUM: d1df4cc52a9d8bce39546afd8b939164f6a5779e
+
+COCOAPODS: 1.4.0
