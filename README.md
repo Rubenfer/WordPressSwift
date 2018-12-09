@@ -33,7 +33,7 @@ wordpress.getCategories(blogURL: "http://myBlog.es") { (categories) in
 
 var myPosts: [WPPost] = []
 
-wordpress.getPosts(blogURL: "http://myBlog.es", page: 1, postPerPage: 5, categoryID: [0]) { (posts) in
+wordpress.getPosts(blogURL: "http://myBlog.es", page: 1, postPerPage: 5) { (posts) in
 
     /*
     If you have a blog with many posts, the best way to load it quickly on your app is loading posts by pages. You must enter the page to load (you can use a counter to increment it when you want to load more posts) and postPerPage, which is the number of posts that you want load per each page.
