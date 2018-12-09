@@ -109,10 +109,11 @@ public class WordpressSwift {
     ///   - blogURL: URL of the Wordpress blog. Like: https://myblog.com
     ///   - completionHandler: The completion handler to call when the load request is complete. This completion handler takes an array of WPCategory as parameter.
     public static func getCategories(blogURL: String, completionHandler: @escaping ([WPCategory]) -> Void) {
-        var categories = [WPCategory]()
+        var categories: [WPCategory] = []
         let baseURL = blogURL + "/wp-json/wp/v2/categories"
         guard let url = URL(string: baseURL) else {
             print("ERROR: Please, type a correct URL, like:  https://myblog.com")
+            completionHandler(categories)
             return
         }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -123,7 +124,7 @@ public class WordpressSwift {
                     completionHandler(categories)
                 }
             } catch {
-                print("ERROR")
+                completionHandler(categories)
             }
             }.resume()
     }
@@ -138,7 +139,7 @@ public class WordpressSwift {
     ///   - categoryID: Array of category IDs. Use it to filter by category.
     ///   - completionHandler: The completion handler to call when the load request is complete. This completion handler takes an array of WPPost as parameter.
     public static func getPosts(blogURL: String, page: Int, postPerPage: Int, categoryID: [Int] = [], completionHandler: @escaping ([WPPost]) -> Void) {
-        var posts = [WPPost]()
+        var posts: [WPPost] = []
         if postPerPage > 0 && page > 0 && blogURL.isEmpty == false{
             var baseURL = blogURL + "/wp-json/wp/v2/posts?page=\(page)&per_page=\(postPerPage)"
             if !categoryID.isEmpty {
@@ -151,7 +152,8 @@ public class WordpressSwift {
                 baseURL += "&categories=\(categories)"
             }
             guard let url = URL(string: baseURL) else {
-                print("ERROR: Please, type a correct URL, like:  http://myblog.com")
+                print("ERROR: Please, type a correct URL, like:  https://myblog.com")
+                completionHandler(posts)
                 return
             }
             URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -162,11 +164,12 @@ public class WordpressSwift {
                         completionHandler(posts)
                     }
                 } catch {
-                    print("ERROR")
+                    completionHandler(posts)
                 }
                 }.resume()
         } else {
             print("Please, complete all parameters with correct values")
+            completionHandler(posts)
         }
     }
     
@@ -177,10 +180,11 @@ public class WordpressSwift {
     ///   - blogURL: URL of the Wordpress blog. Like: https://myblog.com
     ///   - post: Post to get featured image
     ///   - completionHandler: The completion handler to call when the load request is complete. This completion handler takes a WPFeaturedImage as parameter.
-    public static func featuredImage(blogURL: String, post: WPPost, completionHandler: @escaping (WPFeaturedImage) -> Void) {
+    public static func featuredImage(blogURL: String, post: WPPost, completionHandler: @escaping (WPFeaturedImage?) -> Void) {
         let baseURL = blogURL + "/wp-json/wp/v2/media/" + "\(post.featured_media)"
         guard let url = URL(string: baseURL) else {
             print("ERROR: Please, type a correct URL, like:  http://myblog.com")
+            completionHandler(nil)
             return
         }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -191,7 +195,7 @@ public class WordpressSwift {
                     completionHandler(image)
                 }
             } catch {
-                print("ERROR")
+                completionHandler(nil)
             }
             }.resume()
     }
