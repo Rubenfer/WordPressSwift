@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/WordPressSwift-Swift.h</key>
 		<data>
-		WHJwF8ZVykQqIMj9+cso/gKsbTM=
+		yyLfkH9e3BvM5w1W6rLNrpItdjA=
 		</data>
 		<key>Headers/WordPressSwift.h</key>
 		<data>
@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		PZdCvdPMYNtdIScYf8q1g2V+p7Q=
+		sQLVUwN9dFcpIT/oN42+idM6C30=
 		</data>
 		<key>Modules/WordPressSwift.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		+m4JJwisyzg3HBh5tip3BLUBD/o=
+		e0whM5ix0waaSPWrM9aY5pVT5TM=
 		</data>
 		<key>Modules/WordPressSwift.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		CGJ+/xmvG/zB4J87lEnp0hcYWrc=
+		2Cea8gAetvb5pzKmosgjCbyrkx0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -35,11 +35,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WHJwF8ZVykQqIMj9+cso/gKsbTM=
+			yyLfkH9e3BvM5w1W6rLNrpItdjA=
 			</data>
 			<key>hash2</key>
 			<data>
-			bjp2ifF/XGodpSYSwnPzNbxALhrNiBfQURtYg50CjjU=
+			Nhh5Pu01oU9tSaAgnlH67B8+fis6dE4okqpRiYdjn90=
 			</data>
 		</dict>
 		<key>Headers/WordPressSwift.h</key>
@@ -57,22 +57,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+m4JJwisyzg3HBh5tip3BLUBD/o=
+			e0whM5ix0waaSPWrM9aY5pVT5TM=
 			</data>
 			<key>hash2</key>
 			<data>
-			QKr4LlfvP+2c9K3LJ4ylVe3juBtQHXhf8qqfOwvPgkw=
+			bjQE+YRCJn9FjTDc7/LfDQ2dP/uB/nXLeXhPpTws50M=
 			</data>
 		</dict>
 		<key>Modules/WordPressSwift.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			CGJ+/xmvG/zB4J87lEnp0hcYWrc=
+			2Cea8gAetvb5pzKmosgjCbyrkx0=
 			</data>
 			<key>hash2</key>
 			<data>
-			6fYi8wbH0JYZhvbz/+PH1rLpZJN0qzGEi3/WHwPP3pM=
+			+XJwRW+zXnkjmfKQRXJzozbTwyvoHjKt0VYeF7pZRMk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -89,7 +89,7 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -120,24 +120,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -173,13 +161,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>
