@@ -9,30 +9,30 @@ If you're using Xcode 11, you can simply add the Swift Package dependency to you
 ## Usage
 
 ### Obtain posts
-**Class: `WPPost`**
-Class methods:
-`getPosts(web:author:numberOfPosts:after:categories:completionHandler:)`
-`getPosts(web:page:postsPerPage:author:after:categories:completionHandler:)`
-`getPost(web:id:completionHandler:)`
-`getPostsMonth(_:month:year:) -> [WPPost]`
-`getPostsMonth(_:) -> [WPPost]`
-`getFirstPost(_:) -> WPPost?`
-Instance methods:
-`countWords() -> Int`
+**Class: `WPPost`**  
+Class methods:  
+`getPosts(web:author:numberOfPosts:after:categories:completionHandler:)`  
+`getPosts(web:page:postsPerPage:author:after:categories:completionHandler:)`  
+`getPost(web:id:completionHandler:)`  
+`getPostsMonth(_:month:year:) -> [WPPost]`  
+`getPostsMonth(_:) -> [WPPost]`  
+`getFirstPost(_:) -> WPPost?`  
+Instance methods:  
+`countWords() -> Int`  
 
-**Class: `WPMedia`**
-Class methods:
-`getImage(web:id:completionHandler)`
+**Class: `WPMedia`**  
+Class methods:  
+`getImage(web:id:completionHandler)`  
 
-**Class: `WPCategory`**
-Class methods:
-`getCategories(web:completionHandler:)`
-`getCategory(web:id:completionHandler:)`
+**Class: `WPCategory`**  
+Class methods:  
+`getCategories(web:completionHandler:)`  
+`getCategory(web:id:completionHandler:)`  
 
-**Class: `WPAuthor`**
-Class methods:
-`getAuthors(web:completionHandler:)`
-`getAuthor(web:id:completionHandler:)`
+**Class: `WPAuthor`**  
+Class methods:  
+`getAuthors(web:completionHandler:)`  
+`getAuthor(web:id:completionHandler:)`  
 
 For more information about the usage of available methods, please check the documentation of each one.
 
