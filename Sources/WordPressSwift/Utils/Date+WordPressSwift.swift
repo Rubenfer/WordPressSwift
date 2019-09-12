@@ -2,7 +2,8 @@ import Foundation
 
 extension Date {
     
-    static func parse(_ string: String) -> Date {
+    /// Parses a "yyyy-MM-dd HH:mm:ss" string or ISO8601 string to Date object.
+    public static func parse(_ string: String) -> Date {
         let fecha = string.replacingOccurrences(of:"T", with: " ", options: .regularExpression)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -10,23 +11,28 @@ extension Date {
         return dateFormatter.date(from: fecha) ?? ISO8601DateFormatter().date(from: string)!
     }
     
-    static func monthName(_ monthNumber: Int) -> String {
+    /// Returns the name of the month specified.
+    public static func monthName(_ monthNumber: Int) -> String {
         return DateFormatter().monthSymbols[monthNumber-1]
     }
     
-    func day() -> Int {
+    /// Returns the current day.
+    public func day() -> Int {
         return Calendar.current.component(.day, from: self)
     }
     
-    func month() -> Int {
+    /// Returns the current month.
+    public func month() -> Int {
         return Calendar.current.component(.month, from: self)
     }
     
-    func year() -> Int {
+    /// Returns the current year.
+    public func year() -> Int {
         return Calendar.current.component(.year, from: self)
     }
     
-    func toString() -> String {
+    /// Returns the ISO8601 string
+    public func toString() -> String {
         return ISO8601DateFormatter().string(from: self)
     }
     

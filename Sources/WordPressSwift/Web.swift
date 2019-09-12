@@ -1,5 +1,9 @@
 import Foundation
 
+/**
+ Web represents a WordPress blog.
+ If whe API access is protected, you shoud initialize the object with a Basic Authentication token.
+ */
 public struct Web: Codable {
     public let name: String
     public let url: String

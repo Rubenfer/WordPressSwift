@@ -1,5 +1,8 @@
 import Foundation
 
+/**
+ WPCategory represents a category that exists on a WordPress blog.
+ */
 public class WPCategory: Codable {
     
     public let id: Int
@@ -11,6 +14,9 @@ public class WPCategory: Codable {
     public let taxonomy: String
     public let parent: Int
     
+    /// Gets all the categories from the specified website.
+    /// - Parameter web: Object representing the website to use as source of categories.
+    /// - Parameter completionHandler: A closure which is called with the array of categories available.
     public class func getCategories(web: Web, completionHandler: @escaping ([WPCategory])->() ) {
         
         let url = URL(string: web.url + "/wp-json/wp/v2/categories?per_page=100")
@@ -27,6 +33,10 @@ public class WPCategory: Codable {
         
     }
     
+    /// Gets the information of one category identified by id.
+    /// - Parameter web: Object representing the website to use as source of categories.
+    /// - Parameter id: Category's ID
+    /// - Parameter completionHandler: A closure which is called with the WPCategory object.
     public class func getCategory(web: Web, id: Int, completionHandler: @escaping (WPCategory) -> ()) {
         
         let url = URL(string: web.url + "/wp-json/wp/v2/categories/\(id)")

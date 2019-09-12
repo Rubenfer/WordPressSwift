@@ -1,5 +1,8 @@
 import Foundation
 
+/**
+ WPPost represents a created post.
+ */
 public class WPPost: Decodable {
     
     public struct Content: Codable {
@@ -31,12 +34,20 @@ public class WPPost: Decodable {
     public let categories: [Int]
     public let tags: [Int]
     
+    /// Calculates the lenght of the post.
     public func countWords() -> Int {
         let components = content.rendered.clean().components(separatedBy: .whitespacesAndNewlines)
         let words = components.filter { !$0.isEmpty }
         return words.count
     }
     
+    /// Gets the posts of a specified website.
+    /// - Parameter web: Object representing the website to use as source of posts.
+    /// - Parameter author: (Optional) Get only the posts of a concrete author identified by id. By default returns posts of all authors.
+    /// - Parameter numberOfPosts: (Optional) Get only the 'numberOfPosts' latests posts. By defaults returns all posts.
+    /// - Parameter date: (Optional) Get only the posts created since 'date'. ISO8601 string (you can generate it using `toString()`Date method available when you import WordPressSwift). By default returns all posts.
+    /// - Parameter categories: (Optional) Get only the posts associated with the specified categories. By default returns all posts.
+    /// - Parameter completionHandler: A closure which is called with the array of posts.
     public class func getPosts(web: Web, author: Int = 0, numberOfPosts: Int = 0, after date: String? = nil, categories: [Int] = [], completionHandler: @escaping ([WPPost])->()) {
         
         var posts: [WPPost] = []
@@ -75,6 +86,14 @@ public class WPPost: Decodable {
         
     }
     
+    /// Gets the posts of a specified website.
+    /// - Parameter web: Object representing the website to use as source of posts.
+    /// - Parameter page: The number of the page to download.
+    /// - Parameter postsPerPage: The number of posts per downloaded page.
+    /// - Parameter author: (Optional) Get only the posts of a concrete author identified by id. By default returns posts of all authors.
+    /// - Parameter date: (Optional) Get only the posts created since 'date'. ISO8601 string (you can generate it using `toString()`Date method available when you import WordPressSwift). By default returns all posts.
+    /// - Parameter categories: (Optional) Get only the posts associated with the specified categories. By default returns all posts.
+    /// - Parameter completionHandler: A closure which is called with the array of posts.
     public class func getPosts(web: Web, page: Int, postsPerPage: Int, author: Int = 0, after date: String? = nil, categories: [Int] = [], completionHandler: @escaping ([WPPost])->()) {
         getPosts(web: web, page: page, postPerPage: postsPerPage, author: author, after: date, categories: categories) { posts, _ in
             completionHandler(posts)
@@ -114,6 +133,10 @@ public class WPPost: Decodable {
         
     }
     
+    /// Get a concrete post.
+    /// - Parameter web: Object representing the website to use as source of posts.
+    /// - Parameter id: Post's id.
+    /// - Parameter completionHandler: A closure which is called with the WPPost.
     public class func getPost(web: Web, id: Int, completionHandler: @escaping (WPPost)->()) {
         
         let urlStr = web.url + "/wp-json/wp/v2/posts/\(id)"
@@ -130,15 +153,23 @@ public class WPPost: Decodable {
         
     }
     
+    /// Filters an array of WPPost to search the posts created at concrete month.
+    /// - Parameter allPosts: Array of posts to use as source of data.
+    /// - Parameter month: Month number.
+    /// - Parameter year: Year number.
     public class func getPostsMonth(_ allPosts: [WPPost], month: Int, year: Int) -> [WPPost] {
         return allPosts.filter( { Date.parse($0.date).year() == year && Date.parse($0.date).month() == month } )
     }
     
+    /// Filters an array of WPPost to search the posts created at current month.
+    /// - Parameter allPosts: Array of posts to use as source of data.
     public class func getPostsMonth(_ allPosts: [WPPost]) -> [WPPost] {
         let currentDate = Date()
         return getPostsMonth(allPosts, month: currentDate.month(), year: currentDate.year())
     }
     
+    /// Returns the first post created.
+    /// - Parameter allPosts: Array of posts to use as source of data.
     public class func getFirstPost(_ allPosts: [WPPost]) -> WPPost? {
         return allPosts.sorted(by: { Date.parse($0.date) < Date.parse($1.date) } ).first
     }

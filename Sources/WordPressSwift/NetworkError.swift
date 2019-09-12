@@ -1,3 +1,3 @@
-public enum NetworkError: Error {
+internal enum NetworkError: Error {
     case badContent
 }
