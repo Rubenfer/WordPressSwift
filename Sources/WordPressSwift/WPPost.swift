@@ -48,7 +48,7 @@ public class WPPost: Decodable {
     /// - Parameter date: (Optional) Get only the posts created since 'date'. ISO8601 string (you can generate it using `toString()`Date method available when you import WordPressSwift). By default returns all posts.
     /// - Parameter categories: (Optional) Get only the posts associated with the specified categories. By default returns all posts.
     /// - Parameter completionHandler: A closure which is called with the array of posts.
-    public class func getPosts(web: Web, author: Int = 0, numberOfPosts: Int = 0, after date: String? = nil, categories: [Int] = [], completionHandler: @escaping ([WPPost])->()) {
+    public class func getPosts(web: WPWeb, author: Int = 0, numberOfPosts: Int = 0, after date: String? = nil, categories: [Int] = [], completionHandler: @escaping ([WPPost])->()) {
         
         var posts: [WPPost] = []
         
@@ -94,13 +94,13 @@ public class WPPost: Decodable {
     /// - Parameter date: (Optional) Get only the posts created since 'date'. ISO8601 string (you can generate it using `toString()`Date method available when you import WordPressSwift). By default returns all posts.
     /// - Parameter categories: (Optional) Get only the posts associated with the specified categories. By default returns all posts.
     /// - Parameter completionHandler: A closure which is called with the array of posts.
-    public class func getPosts(web: Web, page: Int, postsPerPage: Int, author: Int = 0, after date: String? = nil, categories: [Int] = [], completionHandler: @escaping ([WPPost])->()) {
+    public class func getPosts(web: WPWeb, page: Int, postsPerPage: Int, author: Int = 0, after date: String? = nil, categories: [Int] = [], completionHandler: @escaping ([WPPost])->()) {
         getPosts(web: web, page: page, postPerPage: postsPerPage, author: author, after: date, categories: categories) { posts, _ in
             completionHandler(posts)
         }
     }
     
-    private class func getPosts(web: Web, page: Int, postPerPage: Int, author: Int = 0, after date: String? = nil, categories: [Int] = [], completionHandler: @escaping ([WPPost], HTTPURLResponse)->()) {
+    private class func getPosts(web: WPWeb, page: Int, postPerPage: Int, author: Int = 0, after date: String? = nil, categories: [Int] = [], completionHandler: @escaping ([WPPost], HTTPURLResponse)->()) {
         
         var baseUrlStr = web.url + "/wp-json/wp/v2/posts?"
         
@@ -137,7 +137,7 @@ public class WPPost: Decodable {
     /// - Parameter web: Object representing the website to use as source of posts.
     /// - Parameter id: Post's id.
     /// - Parameter completionHandler: A closure which is called with the WPPost.
-    public class func getPost(web: Web, id: Int, completionHandler: @escaping (WPPost)->()) {
+    public class func getPost(web: WPWeb, id: Int, completionHandler: @escaping (WPPost)->()) {
         
         let urlStr = web.url + "/wp-json/wp/v2/posts/\(id)"
         

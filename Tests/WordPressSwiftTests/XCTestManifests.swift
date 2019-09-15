@@ -8,7 +8,6 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(CategoriaTests.allTests),
         testCase(FeaturedImageTests.allTests),
         testCase(WebTests.allTest),
-        testCase(WordPressSwiftTests.allTests),
     ]
 }
 #endif

@@ -21,7 +21,7 @@ public class WPMedia: Codable {
     /// - Parameter web: Object representing the website to use as source of  images.
     /// - Parameter id: 'featured_media' id.
     /// - Parameter completionHandler: A closure which is called with the WPMedia object when is downloaded from the blog.
-    public class func getImage(web: Web, id: Int, completionHandler: @escaping (WPMedia)->()) {
+    public class func getImage(web: WPWeb, id: Int, completionHandler: @escaping (WPMedia)->()) {
         
         let urlStr = web.url + "/wp-json/wp/v2/media/\(id)"
         

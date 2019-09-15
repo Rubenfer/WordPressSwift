@@ -3,7 +3,7 @@ import XCTest
 
 final class PostTests: XCTestCase {
     
-    let web = Web(name: "WordPress Blog", url: "https://wordpress.org/news", token: nil)
+    let web = WPWeb(name: "WordPress Blog", url: "https://wordpress.org/news", token: nil)
     
     func testGetAllPosts() {
         var posts: [WPPost] = []
