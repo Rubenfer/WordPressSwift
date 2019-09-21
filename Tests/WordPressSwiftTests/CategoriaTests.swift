@@ -3,7 +3,7 @@ import XCTest
 
 final class CategoriaTests: XCTestCase {
     
-    let web = WPWeb(name: "WordPress Blog", url: "https://wordpress.org/news", token: nil)
+    let web = WPWeb(url: "https://wordpress.org/news", token: nil)
     
     func testCategorias() {
         var categorias: [WPCategory] = []

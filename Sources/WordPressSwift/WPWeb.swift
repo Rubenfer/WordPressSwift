@@ -6,13 +6,11 @@ import Foundation
  */
 public struct WPWeb: Codable {
     
-    public init(name: String, url: String, token: String? = nil) {
-        self.name = name
+    public init(url: String, token: String? = nil) {
         self.url = url
         self.token = token
     }
     
-    public let name: String
     public let url: String
     public let token: String?
 }

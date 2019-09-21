@@ -4,8 +4,8 @@ import XCTest
 final class WebTests: XCTestCase {
     
     func testEquals() {
-        let web1 = WPWeb(name: "WordPress Blog", url: "https://wordpress.org/news", token: nil)
-        let web2 = WPWeb(name: "WordPress Blog", url: "https://example.org/news", token: nil)
+        let web1 = WPWeb(url: "https://wordpress.org/news", token: nil)
+        let web2 = WPWeb(url: "https://example.org/news", token: nil)
         XCTAssertFalse(web1 == web2)
     }
 
