@@ -1,8 +1,8 @@
 import Foundation
 
-extension String {
+public extension String {
     
-    internal func clean() -> String {
+    func clean() -> String {
         // Remove URLs
         var str = self.replacingOccurrences(of: "@(https?://([-\\w\\.]+[-\\w])+(:\\d+)?(/([\\w/_\\.#-]*(\\?\\S+)?[^\\.\\s])?)?)@", with: "", options: .regularExpression, range: self.startIndex ..< self.endIndex)
         // Remove HTML

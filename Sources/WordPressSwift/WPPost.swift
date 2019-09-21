@@ -6,17 +6,17 @@ import Foundation
 public class WPPost: Decodable {
     
     public struct Content: Codable {
-        let rendered: String
-        let protected: Bool
+        public let rendered: String
+        public let protected: Bool
     }
     
     public struct Title: Codable {
-        let rendered: String
+        public let rendered: String
     }
     
     public struct Excerpt: Codable {
-        let rendered: String
-        let protected: Bool
+        public let rendered: String
+        public let protected: Bool
     }
     
     public let id: Int
